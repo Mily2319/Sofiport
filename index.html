@@ -11,16 +11,36 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    body {
+      font-family:Georgia, 'Times New Roman', Times, serif ;
+      color: #6d3d06;
+      position: relative;
+      min-height: 100vh;
+      z-index: 0;
     }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      color: #402218;
-      background: url('img/imgfundo.jpg') no-repeat center top fixed;
+    body::before {
+      content: "";
+      background: url('img/imgfundo.jpg') no-repeat top center;
       background-size: cover;
-      overflow-x: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 1;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
     }
 
     nav {
@@ -74,22 +94,11 @@
       margin: 4px 0;
     }
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: rgba(255, 240, 230, 0.6);
-      margin-top: 60px;
-      padding: 20px;
-    }
-
     .hero h1 {
       font-size: 56px;
       color: #402218;
       margin-bottom: 10px;
+      text-shadow: 1px 1px 3px #fff;
     }
 
     .hero p {
@@ -199,15 +208,7 @@
       font-size: 14px;
     }
 
-    /* ✅ MEDIA QUERY CORRIGIDA */
     @media (max-width: 768px) {
-      body {
-        background: url('img/imgfundo.jpg') no-repeat center top fixed;
-        background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-      }
-
       .menu-toggle {
         display: flex;
       }
@@ -279,7 +280,7 @@
       <div class="grid-item desfile active"><img src="img/desfile3.jpg" alt="Passarela"></div>
       <div class="grid-item desfile active"><img src="img/desfile4.jpg" alt="Passarela"></div>
       <div class="grid-item desfile active"><img src="img/desfilee.jpg" alt="Passarela"></div>
-      <div class="grid-item desfile active"><img src="img/desfilee2.jpg" alt="Passarela"></div> <!-- Nome corrigido -->
+      <div class="grid-item desfile active"><img src="img/desfilee2.jpg" alt="Passarela"></div>
 
       <!-- Perfil -->
       <div class="grid-item perfil active"><img src="img/perfil.jpg" alt="Perfil"></div>
@@ -288,15 +289,15 @@
 
       <!-- Poses -->
       <div class="grid-item poses active"><img src="img/poses.jpg" alt="Poses"></div>
-      <div class="grid-item poses active"><img src="img/poses2.jpg" alt="Poses"></div> <!-- Nome corrigido -->
-      <div class="grid-item poses active"><img src="img/poses3.jpg" alt="Poses"></div> <!-- Nome corrigido -->
+      <div class="grid-item poses active"><img src="img/poses2.jpg" alt="Poses"></div>
+      <div class="grid-item poses active"><img src="img/poses3.jpg" alt="Poses"></div>
       <div class="grid-item poses active"><img src="img/poses4.jpg" alt="Poses"></div>
       <div class="grid-item poses active"><img src="img/poses5.jpg" alt="Poses"></div>
       <div class="grid-item poses active"><img src="img/poses6.jpg" alt="Poses"></div>
     </div>
   </section>
 
-<section id="medidas">
+  <section id="medidas">
     <h2>Medidas</h2>
     <ul>
       <li>Altura: 1,75cm</li>
@@ -318,18 +319,13 @@
     © 2025 Sofia — Portfólio Profissional. Todos os direitos reservados.
   </footer>
 
-
-    <!-- Script para exibir todas as imagens da galeria ao carregar a página -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".grid-item").forEach(item => {
         item.classList.add("active");
       });
     });
-  </script>
 
-  <!--  script original -->
-  <script>
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -356,6 +352,5 @@
       document.getElementById('nav-links').classList.toggle('active');
     });
   </script>
-
 </body>
 </html>
