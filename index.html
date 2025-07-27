@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sofia | Portfólio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #402218;
+      background: url('img/imgfundo.jpg') no-repeat center top fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(255, 240, 230, 0.9);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .nav-container ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-container a {
+      color: #402218;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav-container a:hover {
+      color: #a0522d;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: #402218;
+      margin: 4px 0;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: rgba(255, 240, 230, 0.6);
+      margin-top: 60px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      color: #402218;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #7b4a32;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: transparent;
+      border: 2px solid #402218;
+      color: #402218;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #a0522d;
+      color: #fff;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+      background-color: rgba(255, 248, 240, 0.9);
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #a0522d;
+      margin-bottom: 20px;
+      border-left: 4px solid #c6a27e;
+      padding-left: 10px;
+      text-transform: uppercase;
+    }
+
+    .filter-buttons {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-buttons button {
+      padding: 6px 14px;
+      border: 1px solid #a0522d;
+      background: transparent;
+      color: #402218;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: #a0522d;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .grid img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 10px rgba(64, 34, 24, 0.4);
+    }
+
+    .grid-item {
+      display: none;
+    }
+
+    .grid-item.active {
+      display: block;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      color: #402218;
+      background-color: rgba(255, 240, 230, 0.5);
+      font-size: 14px;
+    }
+
+    /* ✅ MEDIA QUERY CORRIGIDA */
+    @media (max-width: 768px) {
+      body {
+        background: url('img/imgfundo.jpg') no-repeat center top fixed;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-container ul {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        background: rgba(255, 240, 230, 0.95);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      .nav-container ul.active {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="menu-toggle" id="menu-toggle">
+        <div></div><div></div><div></div>
+      </div>
+      <ul id="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#medidas">Medidas</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Sofia</h1>
+    <p>Modelo de Passarela & Fotográfica</p>
+    <a href="#sobre" class="btn">Entrar no Portfólio</a>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre Sofia</h2>
+    <p>Sofia Sirte é uma modelo profissional new face com passagens marcantes por desfiles de grandes nomes como Renoir, Ricardo Maia, Fernando Peixoto e IESB...</p>
+  </section>
+
+  <section id="galeria">
+    <h2>Galeria</h2>
+    <div class="filter-buttons">
+      <button class="active" data-filter="all">Trabalhos</button>
+      <button data-filter="perfil">Perfil</button>
+      <button data-filter="desfile">Desfile</button>
+      <button data-filter="poses">Poses</button>
+    </div>
+    <div class="grid">
+      <!-- Trabalhos -->
+      <div class="grid-item trabalhos active"><img src="img/trabalhos3.jpg" alt="Trabalhos"></div>
+      <div class="grid-item trabalhos active"><img src="img/trabalhos4.jpg" alt="Trabalhos"></div>
+      <div class="grid-item trabalhos active"><img src="img/trabalhos.jpg" alt="Trabalhos"></div>
+
+      <!-- Desfiles -->
+      <div class="grid-item desfile active"><img src="img/desfilelook1.jpg" alt="Passarela"></div>
+      <div class="grid-item desfile active"><img src="img/desfilelook2.jpg" alt="Passarela"></div>
+      <div class="grid-item desfile active"><img src="img/desfile3.jpg" alt="Passarela"></div>
+      <div class="grid-item desfile active"><img src="img/desfile4.jpg" alt="Passarela"></div>
+      <div class="grid-item desfile active"><img src="img/desfilee.jpg" alt="Passarela"></div>
+      <div class="grid-item desfile active"><img src="img/desfilee2.jpg" alt="Passarela"></div> <!-- Nome corrigido -->
+
+      <!-- Perfil -->
+      <div class="grid-item perfil active"><img src="img/perfil.jpg" alt="Perfil"></div>
+      <div class="grid-item perfil active"><img src="img/perfil3.jpg" alt="Perfil"></div>
+      <div class="grid-item perfil active"><img src="img/perfil5.jpg" alt="Perfil"></div>
+
+      <!-- Poses -->
+      <div class="grid-item poses active"><img src="img/poses.jpg" alt="Poses"></div>
+      <div class="grid-item poses active"><img src="img/poses2.jpg" alt="Poses"></div> <!-- Nome corrigido -->
+      <div class="grid-item poses active"><img src="img/poses3.jpg" alt="Poses"></div> <!-- Nome corrigido -->
+      <div class="grid-item poses active"><img src="img/poses4.jpg" alt="Poses"></div>
+      <div class="grid-item poses active"><img src="img/poses5.jpg" alt="Poses"></div>
+      <div class="grid-item poses active"><img src="img/poses6.jpg" alt="Poses"></div>
+    </div>
+  </section>
+
+<section id="medidas">
+    <h2>Medidas</h2>
+    <ul>
+      <li>Altura: 1,75cm</li>
+      <li>Busto: 86cm</li>
+      <li>Cintura: 69cm</li>
+      <li>Quadril: 103cm</li>
+      <li>Manequim: 40</li>
+    </ul>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Email: contact.me.sofiasiqueira@gmail.com </p>
+    <p>Instagram: @sofiasirt</p>
+    <p>WhatsApp: (75) 9158-6075</p>
+  </section>
+
+  <footer>
+    © 2025 Sofia — Portfólio Profissional. Todos os direitos reservados.
+  </footer>
+
+
+    <!-- Script para exibir todas as imagens da galeria ao carregar a página -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".grid-item").forEach(item => {
+        item.classList.add("active");
+      });
+    });
+  </script>
+
+  <!--  script original -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const gridItems = document.querySelectorAll('.grid-item');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        gridItems.forEach(item => {
+          item.classList.remove('active');
+          if (filter === 'all' || item.classList.contains(filter)) item.classList.add('active');
+        });
+      });
+    });
+
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
