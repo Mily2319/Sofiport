@@ -209,7 +209,13 @@
       font-size: 14px;
     }
 
+    /* --- AJUSTES DE MOBILE RESPONSIVO --- */
     @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+        background-position: top center;
+      }
+
       .menu-toggle {
         display: flex;
       }
@@ -229,15 +235,35 @@
         display: flex;
       }
 
+      .hero {
+        height: auto !important;
+        margin-top: 60px;
+        padding: 20px 10px;
+      }
+
       .hero h1 {
-        font-size: 40px;
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .grid img {
+        max-height: 300px;
+        object-fit: cover;
+      }
+
+      .hero img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
       }
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
-
   <nav>
     <div class="nav-container">
       <div class="menu-toggle" id="menu-toggle">
@@ -272,31 +298,9 @@
       <button data-filter="poses">Poses</button>
     </div>
     <div class="grid">
-      <!-- Trabalhos -->
+      <!-- Adicione aqui suas imagens -->
       <div class="grid-item trabalhos active"><img src="img/trabalhos3.jpg" alt="Trabalhos"></div>
-      <div class="grid-item trabalhos active"><img src="img/trabalhos4.jpg" alt="Trabalhos"></div>
-      <div class="grid-item trabalhos active"><img src="img/trabalhos.jpg" alt="Trabalhos"></div>
-
-      <!-- Desfiles -->
-      <div class="grid-item desfile active"><img src="img/desfilelook1.jpg" alt="Passarela"></div>
-      <div class="grid-item desfile active"><img src="img/desfilelook2.jpg" alt="Passarela"></div>
-      <div class="grid-item desfile active"><img src="img/desfile3.jpg" alt="Passarela"></div>
-      <div class="grid-item desfile active"><img src="img/desfile4.jpg" alt="Passarela"></div>
-      <div class="grid-item desfile active"><img src="img/desfilee.jpg" alt="Passarela"></div>
-      <div class="grid-item desfile active"><img src="img/desfilee2.jpg" alt="Passarela"></div>
-
-      <!-- Perfil -->
-      <div class="grid-item perfil active"><img src="img/perfil.jpg" alt="Perfil"></div>
-      <div class="grid-item perfil active"><img src="img/perfil3.jpg" alt="Perfil"></div>
-      <div class="grid-item perfil active"><img src="img/perfil5.jpg" alt="Perfil"></div>
-
-      <!-- Poses -->
-      <div class="grid-item poses active"><img src="img/poses.jpg" alt="Poses"></div>
-      <div class="grid-item poses active"><img src="img/poses2.jpg" alt="Poses"></div>
-      <div class="grid-item poses active"><img src="img/poses3.jpg" alt="Poses"></div>
-      <div class="grid-item poses active"><img src="img/poses4.jpg" alt="Poses"></div>
-      <div class="grid-item poses active"><img src="img/poses5.jpg" alt="Poses"></div>
-      <div class="grid-item poses active"><img src="img/poses6.jpg" alt="Poses"></div>
+      <!-- ... -->
     </div>
   </section>
 
