@@ -211,10 +211,11 @@
 
     /* --- AJUSTES DE MOBILE RESPONSIVO --- */
     @media (max-width: 768px) {
-      body {
-        background-attachment: scroll;
-        background-position: top center;
-      }
+  .grid img {
+    object-fit: contain;
+    object-position: center;
+    max-height: none;
+  }
 
       .menu-toggle {
         display: flex;
@@ -254,13 +255,13 @@
         object-fit: cover;
       }
 
-      .hero img {
-        width: 100%;
-        height: auto;
-        max-height: 400px;
-        object-fit: contain;
-      }
-    }
+     .hero img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+  }
+}
   </style>
 </head>
 <body>
