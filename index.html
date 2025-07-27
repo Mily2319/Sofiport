@@ -28,7 +28,7 @@
       height: 100vh;
       background-image: url('img/imgfundo.jpg');
       background-size: cover;
-      background-position: top center;
+      background-position:  top center;
       background-repeat: no-repeat;
       z-index: -1;
     }
@@ -212,11 +212,10 @@
     /* --- AJUSTES DE MOBILE RESPONSIVO --- */
     @media (max-width: 768px) {
   .grid img {
-  object-fit: contain;
-  object-position: top;
-  height: auto;
-  max-height: 350px;
-}
+    object-fit: contain;
+    object-position: center;
+    max-height: none;
+  }
 
       .menu-toggle {
         display: flex;
@@ -252,10 +251,9 @@
       }
 
       .grid img {
-  object-fit: cover;
-  object-position: top;
-  height: 500px;
-}
+        max-height: 300px;
+        object-fit: cover;
+      }
 
      .hero img {
     width: 100%;
